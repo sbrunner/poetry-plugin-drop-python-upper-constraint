@@ -1,0 +1,28 @@
+inherits:
+  - duplicated
+
+strictness: veryhigh
+doc-warnings: true
+max-line-length: 110
+
+pylint:
+  disable:
+    - too-many-branches
+
+pydocstyle:
+  disable:
+    - D203 # 1 blank line required before class docstring
+
+bandit:
+  run: true
+  options:
+    config: .bandit.yaml
+
+mypy:
+  run: true
+
+mccabe:
+  run: false
+
+pyroma:
+  run: true
