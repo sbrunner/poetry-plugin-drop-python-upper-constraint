@@ -9,6 +9,9 @@ python = ">=3.9,<3.12"
 
 And in the exported wheel we will have only `python=">=3.9"`.
 
+The goal is to have an upper constraint to do the lock but to don't have it in the exported wheel,
+then to permit to use it with newer Python version.
+
 Config:
 
 ```toml

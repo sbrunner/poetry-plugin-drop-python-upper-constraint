@@ -32,7 +32,7 @@ poetry = "==1.6.1"
 prospector = { version = "1.10.2", extras = ["with_bandit", "with_mypy", "with_pyroma"] }
 
 [tool.poetry.plugins."poetry.application.plugin"]
-tweak_dependencies_version = "poetry_plugin_tweak_dependencies_version:Plugin"
+poetry_plugin_drop_python_upper_constraint = "poetry_plugin_drop_python_upper_constraint:Plugin"
 
 [tool.poetry.group.dev.dependencies]
 prospector-profile-duplicated = "0.3.0"
@@ -43,5 +43,8 @@ vcs = "git"
 pattern = "^((?P<epoch>\\d+)!)?(?P<base>\\d+(\\.\\d+)*)"
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning", "poetry-plugin-tweak-dependencies-version"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry-plugin-tweak-dependencies-version]
+default = "present"

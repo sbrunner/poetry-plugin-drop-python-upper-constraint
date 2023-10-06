@@ -28,22 +28,13 @@ class Plugin(ApplicationPlugin):
 
     _application: Application
     _pyproject: dict[str, Any]
-    _plugin_config: dict[str, Any]
-    _state: VersionConstraint
+    _state: str
 
     def activate(self, application: Application) -> None:
         """Activate the plugin."""
         self._application = application
         self._pyproject = self._application.poetry.pyproject.data
-        self._plugin_config = self._pyproject.get("tool", {}).get(
-            "poetry-plugin-tweak-dependencies-version", {}
-        )
-        for key, value in list(self._plugin_config.items()):
-            if "_" in key:
-                new_key = key.replace("_", "-")
-                if new_key not in self._plugin_config:
-                    self._plugin_config[new_key] = value
-        self._state = {}
+        self._state = ""
 
         event_dispatcher = application.event_dispatcher
         assert event_dispatcher is not None
@@ -55,6 +46,8 @@ class Plugin(ApplicationPlugin):
     def _revert_version(self, event: Event, kind: str, dispatcher: EventDispatcher):
         del event, kind, dispatcher
 
+        if self._state:
+            self._application.poetry.package.python_versions = self._state
 
     def _zero(self, version_pice: Optional[int]):
         return None if version_pice is None else 0
@@ -69,8 +62,9 @@ class Plugin(ApplicationPlugin):
         if event.command.name not in ("build",):
             return
 
-        print(self._application.poetry)
-        print(type(self._application.poetry))
-        print(self._application.poetry.package)
-        print(type(self._application.poetry.package))
-        assert False
+        constraint = parse_constraint(self._application.poetry.package.python_versions)
+        assert isinstance(constraint, VersionRangeConstraint)
+        self._state = self._application.poetry.package.python_versions
+
+        operator = ">=" if constraint.include_min else ">"
+        self._application.poetry.package.python_versions = f"{operator}{constraint.min}"

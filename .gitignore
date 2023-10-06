@@ -2,5 +2,5 @@ __pycache__/
 *.pyc
 /example/dist/
 /example-0.1.0.dist-info/
-/example/__init__.py
+/example/poetry.lock
 /.github/changelog-generator-cache
