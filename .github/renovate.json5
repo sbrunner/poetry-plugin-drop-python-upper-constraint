@@ -61,6 +61,12 @@
       separateMajorMinor: false,
       separateMinorPatch: false,
     },
+    /** Accept only the patch on stabilization branches */
+    {
+      matchBaseBranches: ['/^[0-9]+\\.[0-9]+$/'],
+      matchUpdateTypes: ['major', 'minor', 'pin', 'digest', 'lockFileMaintenance', 'rollback', 'bump'],
+      enabled: false,
+    },
     /** Disable for the test example */
     {
       matchFiles: ['example/pyproject.toml'],
