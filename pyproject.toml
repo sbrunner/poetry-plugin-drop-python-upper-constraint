@@ -25,7 +25,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.12"
+python = ">=3.12,<3.13"
 poetry = "==1.6.1"
 
 [tool.poetry.dev-dependencies]
@@ -35,7 +35,7 @@ prospector = { version = "1.10.2", extras = ["with_bandit", "with_mypy", "with_p
 poetry_plugin_drop_python_upper_constraint = "poetry_plugin_drop_python_upper_constraint:Plugin"
 
 [tool.poetry.group.dev.dependencies]
-prospector-profile-duplicated = "0.3.0"
+prospector-profile-duplicated = "0.5.1"
 
 [tool.poetry-dynamic-versioning]
 enable = true
