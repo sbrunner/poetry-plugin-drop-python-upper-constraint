@@ -51,7 +51,7 @@ jobs:
         env:
           GITHUB_EVENT: ${{ toJson(github) }}
 
-      - run: pip install --use-pep517 .
+      - run: pip install .
 
       - run: (cd example/; poetry build -v)
       - run: unzip example/dist/example-*-py3-none-any.whl
