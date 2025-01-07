@@ -21,7 +21,7 @@ classifiers = [
     'Programming Language :: Python :: 3.13',
     'Typing :: Typed',
 ]
-packages = [ { include = "poetry_plugin_drop_python_upper_constraint/py.typed" }]
+packages = [{ include = "poetry_plugin_drop_python_upper_constraint" }, { include = "poetry_plugin_drop_python_upper_constraint/py.typed" }]
 
 [tool.poetry.dependencies]
 python = ">=3.9.2,<3.14"
