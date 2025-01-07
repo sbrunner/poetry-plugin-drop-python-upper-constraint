@@ -1,7 +1,7 @@
 """Poetry plugin use to tweak the dependencies of the project."""
 
 import re
-from typing import Any, Optional
+from typing import Any
 
 import cleo.commands.command
 import cleo.events.console_events
@@ -12,12 +12,9 @@ from cleo.events.event_dispatcher import EventDispatcher
 from poetry.console.application import Application
 from poetry.core.constraints.version import (
     Version,
-    VersionConstraint,
-    VersionRange,
     VersionRangeConstraint,
     parse_constraint,
 )
-from poetry.core.version.pep440 import Release
 from poetry.plugins.application_plugin import ApplicationPlugin
 
 _VERSION_RE = re.compile(r"^([1-9])+(\.([1-9])+(\.([1-9])+)?)?(.*)$")
