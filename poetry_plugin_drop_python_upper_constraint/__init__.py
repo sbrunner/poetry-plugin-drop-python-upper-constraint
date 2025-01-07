@@ -49,7 +49,7 @@ class Plugin(ApplicationPlugin):
         if self._state:
             self._application.poetry.package.python_versions = self._state
 
-    def _zero(self, version_pice: Optional[int]):
+    def _zero(self, version_pice: int | None):
         return None if version_pice is None else 0
 
     def _min(self, constraint, release_new):
