@@ -1,7 +1,7 @@
 """Poetry plugin use to tweak the dependencies of the project."""
 
 import re
-from typing import Any, Optional
+from typing import Any
 
 import cleo.commands.command
 import cleo.events.console_events
@@ -11,13 +11,9 @@ from cleo.events.event import Event
 from cleo.events.event_dispatcher import EventDispatcher
 from poetry.console.application import Application
 from poetry.core.constraints.version import (
-    Version,
-    VersionConstraint,
-    VersionRange,
     VersionRangeConstraint,
     parse_constraint,
 )
-from poetry.core.version.pep440 import Release
 from poetry.plugins.application_plugin import ApplicationPlugin
 
 _VERSION_RE = re.compile(r"^([1-9])+(\.([1-9])+(\.([1-9])+)?)?(.*)$")
@@ -43,19 +39,13 @@ class Plugin(ApplicationPlugin):
         event_dispatcher.add_listener(cleo.events.console_events.TERMINATE, self._revert_version)
         event_dispatcher.add_listener(cleo.events.console_events.ERROR, self._revert_version)
 
-    def _revert_version(self, event: Event, kind: str, dispatcher: EventDispatcher):
+    def _revert_version(self, event: Event, kind: str, dispatcher: EventDispatcher) -> None:
         del event, kind, dispatcher
 
         if self._state:
             self._application.poetry.package.python_versions = self._state
 
-    def _zero(self, version_pice: Optional[int]):
-        return None if version_pice is None else 0
-
-    def _min(self, constraint, release_new):
-        return Version.parse(release_new.text) if (release_new < constraint.min.release) else constraint.min
-
-    def _apply_version(self, event: Event, kind: str, dispatcher: EventDispatcher):
+    def _apply_version(self, event: Event, kind: str, dispatcher: EventDispatcher) -> None:
         del kind, dispatcher
         assert isinstance(event, ConsoleCommandEvent)
 
