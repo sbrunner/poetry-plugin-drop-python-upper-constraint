@@ -11,7 +11,6 @@ from cleo.events.event import Event
 from cleo.events.event_dispatcher import EventDispatcher
 from poetry.console.application import Application
 from poetry.core.constraints.version import (
-    Version,
     VersionRangeConstraint,
     parse_constraint,
 )
@@ -45,12 +44,6 @@ class Plugin(ApplicationPlugin):
 
         if self._state:
             self._application.poetry.package.python_versions = self._state
-
-    def _zero(self, version_pice: int | None) -> int | None:
-        return None if version_pice is None else 0
-
-    def _min(self, constraint, release_new) -> Version:
-        return Version.parse(release_new.text) if (release_new < constraint.min.release) else constraint.min
 
     def _apply_version(self, event: Event, kind: str, dispatcher: EventDispatcher) -> None:
         del kind, dispatcher
