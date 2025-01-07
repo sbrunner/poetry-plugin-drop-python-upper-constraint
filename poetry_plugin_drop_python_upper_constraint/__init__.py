@@ -40,19 +40,19 @@ class Plugin(ApplicationPlugin):
         event_dispatcher.add_listener(cleo.events.console_events.TERMINATE, self._revert_version)
         event_dispatcher.add_listener(cleo.events.console_events.ERROR, self._revert_version)
 
-    def _revert_version(self, event: Event, kind: str, dispatcher: EventDispatcher):
+    def _revert_version(self, event: Event, kind: str, dispatcher: EventDispatcher) -> None:
         del event, kind, dispatcher
 
         if self._state:
             self._application.poetry.package.python_versions = self._state
 
-    def _zero(self, version_pice: int | None):
+    def _zero(self, version_pice: int | None) -> int | None:
         return None if version_pice is None else 0
 
-    def _min(self, constraint, release_new):
+    def _min(self, constraint, release_new) -> Version:
         return Version.parse(release_new.text) if (release_new < constraint.min.release) else constraint.min
 
-    def _apply_version(self, event: Event, kind: str, dispatcher: EventDispatcher):
+    def _apply_version(self, event: Event, kind: str, dispatcher: EventDispatcher) -> None:
         del kind, dispatcher
         assert isinstance(event, ConsoleCommandEvent)
 
