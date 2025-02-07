@@ -2,8 +2,6 @@ inherits:
   - duplicated
   - utils:base
   - utils:fix
-  - utils:unsafe
-
 mypy:
   options:
     python-version: '3.10'
