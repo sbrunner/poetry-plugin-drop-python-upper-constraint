@@ -7,10 +7,6 @@ authors = ["Stéphane Brunner <stephane.brunner@camptocamp.com>"]
 [tool.poetry.dependencies]
 python = ">=3.9,<3.14"
 
-[build-system]
-requires = ["poetry-core==1.0.7", "poetry-dynamic-versioning", "poetry-plugin-tweak-dependencies-version"]
-build-backend = "poetry.core.masonry.api"
-
 [tool.poetry-dynamic-versioning]
 enable = true
 vcs = "git"
@@ -27,3 +23,7 @@ format-jinja = """
 
 [tool.poetry-plugin-tweak-dependencies-version]
 default = "present"
+
+[build-system]
+requires = ["poetry-core==1.0.7", "poetry-dynamic-versioning", "poetry-plugin-tweak-dependencies-version"]
+build-backend = "poetry.core.masonry.api"

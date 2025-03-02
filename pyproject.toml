@@ -1,3 +1,10 @@
+[tool.ruff]
+target-version = "py310"
+line-length = 110
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
 [tool.poetry]
 name = "poetry-plugin-drop-python-upper-constraint"
 version = "0.0.0"
@@ -55,15 +62,9 @@ format-jinja = """
 {%- endif -%}
 """
 
-[tool.ruff]
-target-version = "py310"
-line-length = 110
+[tool.poetry-plugin-tweak-dependencies-version]
+default = "present"
 
-[tool.ruff.lint.pydocstyle]
-convention = "numpy"
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning", "poetry-plugin-tweak-dependencies-version", "poetry-plugin-drop-python-upper-constraint"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry-plugin-tweak-dependencies-version]
-default = "present"
