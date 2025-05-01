@@ -66,6 +66,7 @@ classifiers = [
 ]
 authors = [{name = "Stéphane Brunner",email = "stephane.brunner@camptocamp.com"}]
 packages = [{ include = "poetry_plugin_drop_python_upper_constraint" }, { include = "poetry_plugin_drop_python_upper_constraint/py.typed" }]
+requires-python = ">=3.10"
 
 [project.urls]
 repository = "https://github.com/sbrunner/poetry-plugin-drop-python-upper-constraint"
