@@ -1,5 +1,5 @@
 [tool.ruff]
-target-version = "py310"
+target-version = "py39"
 line-length = 110
 
 [tool.ruff.lint.pydocstyle]
@@ -58,6 +58,7 @@ classifiers = [
     'Natural Language :: English',
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
     'Programming Language :: Python :: 3.12',
@@ -66,6 +67,7 @@ classifiers = [
 ]
 authors = [{name = "Stéphane Brunner",email = "stephane.brunner@camptocamp.com"}]
 packages = [{ include = "poetry_plugin_drop_python_upper_constraint" }, { include = "poetry_plugin_drop_python_upper_constraint/py.typed" }]
+requires-python = ">=3.9"
 
 [project.urls]
 repository = "https://github.com/sbrunner/poetry-plugin-drop-python-upper-constraint"
