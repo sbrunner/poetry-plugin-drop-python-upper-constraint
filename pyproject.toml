@@ -74,5 +74,5 @@ repository = "https://github.com/sbrunner/poetry-plugin-drop-python-upper-constr
 "Bug Tracker" = "https://github.com/sbrunner/poetry-plugin-drop-python-upper-constraint/issues"
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning", "poetry-plugin-tweak-dependencies-version", "poetry-plugin-drop-python-upper-constraint"]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning", "poetry-plugin-tweak-dependencies-version"]
 build-backend = "poetry.core.masonry.api"
