@@ -54,6 +54,7 @@ format-jinja = """
 
 [tool.poetry-plugin-tweak-dependencies-version]
 default = "present"
+poetry = "<2.1.0"
 
 [project]
 dynamic = ["dependencies", "version"]
